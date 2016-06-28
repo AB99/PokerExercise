@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PokerExercise.Hands;
 
 namespace PokerExercise
@@ -15,7 +13,7 @@ namespace PokerExercise
             new HighCard(),
         };
 
-        public List<IPlayer> CalculateWinner(List<IPlayer> players)
+        public List<IPlayer> CalculateWinners(List<IPlayer> players)
         {
             if (players == null)
                 throw new ArgumentNullException(nameof(players));

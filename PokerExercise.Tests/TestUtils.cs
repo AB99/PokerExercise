@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Moq;
+using PokerExercise.Hands;
 
 namespace PokerExercise.Tests
 {
@@ -36,5 +37,12 @@ namespace PokerExercise.Tests
             return stubPlayer.Object;
         }
 
+        public static IPossiblePokerHand CreatedPossiblePokerHand(List<IPlayer> players, List<IPlayer> winners)
+        {
+            var stubPossibleHand = new Mock<IPossiblePokerHand>();
+            stubPossibleHand.Setup(s => s.FindWinningPlayersWithThisHand(players)).Returns(winners);
+
+            return stubPossibleHand.Object;
+        }
     }
 }
