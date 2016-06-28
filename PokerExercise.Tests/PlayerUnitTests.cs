@@ -30,42 +30,42 @@ namespace PokerExercise.Tests
         [Test]
         public void ConstructorTest_HandIsNull_Throws()
         {
-            Card[] hand = null;
+            Card[] cards = null;
             Player player;
 
-            var exception = Assert.Throws<ArgumentNullException>(() => player = new Player(TestUtils.ValidName, hand));
-            Assert.That(exception.ParamName, Is.EqualTo(nameof(hand)));
+            var exception = Assert.Throws<ArgumentNullException>(() => player = new Player(TestUtils.ValidName, cards));
+            Assert.That(exception.ParamName, Is.EqualTo(nameof(cards)));
         }
 
         [Test]
         public void ConstructorTest_HandContainsNull_Throws()
         {
-            List<Card> hand = new List<Card>(TestUtils.ValidHand) { [1] = null };
+            List<Card> cards = new List<Card>(TestUtils.ValidHand) { [1] = null };
             Player player;
 
-            var exception = Assert.Throws<ArgumentException>(() => player = new Player(TestUtils.ValidName, hand.ToArray()));
-            Assert.That(exception.ParamName, Is.EqualTo(nameof(hand)));
+            var exception = Assert.Throws<ArgumentException>(() => player = new Player(TestUtils.ValidName, cards.ToArray()));
+            Assert.That(exception.ParamName, Is.EqualTo(nameof(cards)));
         }
 
         [Test]
         public void ConstructorTest_HandLessThanFiveCards_Throws()
         {
-            List<Card> hand = new List<Card>(TestUtils.ValidHand);
-            hand.RemoveAt(1);
+            List<Card> cards = new List<Card>(TestUtils.ValidHand);
+            cards.RemoveAt(1);
             Player player;
 
-            var exception = Assert.Throws<ArgumentException>(() => player = new Player(TestUtils.ValidName, hand.ToArray()));
-            Assert.That(exception.ParamName, Is.EqualTo(nameof(hand)));
+            var exception = Assert.Throws<ArgumentException>(() => player = new Player(TestUtils.ValidName, cards.ToArray()));
+            Assert.That(exception.ParamName, Is.EqualTo(nameof(cards)));
         }
 
         [Test]
         public void ConstructorTest_HandMoreThanFiveCards_Throws()
         {
-            List<Card> hand = new List<Card>(TestUtils.ValidHand) {TestUtils.CreateCard(Rank.King, Suit.Diamonds)};
+            List<Card> cards = new List<Card>(TestUtils.ValidHand) {TestUtils.CreateCard(Rank.King, Suit.Diamonds)};
             Player player;
 
-            var exception = Assert.Throws<ArgumentException>(() => player = new Player(TestUtils.ValidName, hand.ToArray()));
-            Assert.That(exception.ParamName, Is.EqualTo(nameof(hand)));
+            var exception = Assert.Throws<ArgumentException>(() => player = new Player(TestUtils.ValidName, cards.ToArray()));
+            Assert.That(exception.ParamName, Is.EqualTo(nameof(cards)));
         }
 
 
@@ -90,15 +90,15 @@ namespace PokerExercise.Tests
             var rank = Rank.Ace;
             var suit = Suit.Spades;
 
-            var hand = new List<Card>()
+            var cards = new List<Card>()
             {
                 TestUtils.CreateCard(rank, suit), TestUtils.CreateCard(rank, suit), TestUtils.CreateCard(rank, suit), TestUtils.CreateCard(rank, suit), TestUtils.CreateCard(rank, suit),
             };
 
             Player player;
 
-            var exception = Assert.Throws<ArgumentException>(() => player = new Player(TestUtils.ValidName, hand.ToArray()));
-            Assert.That(exception.ParamName, Is.EqualTo(nameof(hand)));
+            var exception = Assert.Throws<ArgumentException>(() => player = new Player(TestUtils.ValidName, cards.ToArray()));
+            Assert.That(exception.ParamName, Is.EqualTo(nameof(cards)));
         }
 
 

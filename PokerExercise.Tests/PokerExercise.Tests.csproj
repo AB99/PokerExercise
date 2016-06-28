@@ -53,10 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CardUnitTests.cs" />
-    <Compile Include="Hands\HighCardUnitTests.cs" />
-    <Compile Include="Hands\FlushUnitTests.cs" />
-    <Compile Include="Hands\ThreeOfAKindUnitTests.cs" />
-    <Compile Include="Hands\OnePairUnitTests.cs" />
+    <Compile Include="PossiblePokerHands\HighCardUnitTests.cs" />
+    <Compile Include="PossiblePokerHands\FlushUnitTests.cs" />
+    <Compile Include="PossiblePokerHands\ThreeOfAKindUnitTests.cs" />
+    <Compile Include="PossiblePokerHands\OnePairUnitTests.cs" />
     <Compile Include="PlayerUnitTests.cs" />
     <Compile Include="PokerGameUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

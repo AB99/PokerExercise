@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using PokerExercise.Hands;
 using PokerExercise.PossiblePokerHands;
 
-namespace PokerExercise.Tests.Hands
+namespace PokerExercise.Tests.PossiblePokerHands
 {
     [TestFixture]
     public class FlushUnitTests

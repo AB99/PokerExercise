@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using PokerExercise.Hands;
 using PokerExercise.PossiblePokerHands;
 
 namespace PokerExercise
@@ -10,6 +9,7 @@ namespace PokerExercise
     {
         public List<IPossiblePokerHand> PossiblePokerHands = new List<IPossiblePokerHand>
         {
+            new Flush(),
             new ThreeOfAKind(),
             new OnePair(),
             new HighCard(),

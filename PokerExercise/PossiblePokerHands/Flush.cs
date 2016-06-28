@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using PokerExercise.PossiblePokerHands;
 
-namespace PokerExercise.Hands
+namespace PokerExercise.PossiblePokerHands
 {
     public class Flush : KickerDependantHand, IPossiblePokerHand
     {
