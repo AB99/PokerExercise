@@ -16,7 +16,7 @@ namespace PokerExercise.Hands
             return player.Hand.Any(card => player.Hand.Count(c => c.Rank == card.Rank) > 1);
         }
 
-        public List<IPlayer> FindWinningHandsInThisCategory(List<IPlayer> players)
+        public List<IPlayer> FindWinningPlayersInThisCategory(List<IPlayer> players)
         {
             if (players == null)
                 throw new ArgumentNullException(nameof(players));

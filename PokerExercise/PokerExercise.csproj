@@ -45,6 +45,7 @@
     <Compile Include="Hands\HighCard.cs" />
     <Compile Include="Hands\IPokerHandCategory.cs" />
     <Compile Include="Hands\OnePair.cs" />
+    <Compile Include="Hands\PokerHandCategory.cs" />
     <Compile Include="Hands\ThreeOfAKind.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="Rank.cs" />

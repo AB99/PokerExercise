@@ -31,7 +31,7 @@ namespace PokerExercise.Tests.Hands
         {
             List<IPlayer> players = null;
 
-            var exception = Assert.Throws<ArgumentNullException>(() => _highCard.FindWinningHandsInThisCategory(players));
+            var exception = Assert.Throws<ArgumentNullException>(() => _highCard.FindWinningPlayersInThisCategory(players));
             Assert.That(exception.ParamName, Is.EqualTo(nameof(players)));
         }
 
@@ -43,14 +43,14 @@ namespace PokerExercise.Tests.Hands
             var player3 = TestUtils.CreatePlayer();
             var players = new List<IPlayer> { player1, player3, player2 };
 
-            var exception = Assert.Throws<ArgumentException>(() => _highCard.FindWinningHandsInThisCategory(players));
+            var exception = Assert.Throws<ArgumentException>(() => _highCard.FindWinningPlayersInThisCategory(players));
             Assert.That(exception.ParamName, Is.EqualTo(nameof(players)));
         }
 
         [Test]
         public void FindWinningHandsInThisCategory_EmptyList_ReturnsEmptyList()
         {
-            IList<IPlayer> result = _highCard.FindWinningHandsInThisCategory(new List<IPlayer>());
+            IList<IPlayer> result = _highCard.FindWinningPlayersInThisCategory(new List<IPlayer>());
             Assert.That(result.Count, Is.EqualTo(0));
         }
 
@@ -61,8 +61,7 @@ namespace PokerExercise.Tests.Hands
             var player2 = TestUtils.CreatePlayer(hand: new List<Card> { TestUtils.CreateCard(), TestUtils.CreateCard() });
             var players = new List<IPlayer> {player1, player2};
 
-            var exception = Assert.Throws<ArgumentException>(() => _highCard.FindWinningHandsInThisCategory(players));
-            Assert.That(exception.ParamName, Is.EqualTo(nameof(players)));
+            Assert.Throws<ArgumentException>(() => _highCard.FindWinningPlayersInThisCategory(players));
         }
 
 
@@ -87,7 +86,7 @@ namespace PokerExercise.Tests.Hands
                 TestUtils.CreateCard(Rank.Seven),
             });
 
-            var result = _highCard.FindWinningHandsInThisCategory(new List<IPlayer> {player1, player2, player3});
+            var result = _highCard.FindWinningPlayersInThisCategory(new List<IPlayer> {player1, player2, player3});
 
             Assert.That(result.Count, Is.EqualTo(1));
             Assert.That(result.First(), Is.EqualTo(player3));
@@ -114,7 +113,7 @@ namespace PokerExercise.Tests.Hands
                 TestUtils.CreateCard(Rank.King),
             });
 
-            var result = _highCard.FindWinningHandsInThisCategory(new List<IPlayer> { player1, player2, player3 });
+            var result = _highCard.FindWinningPlayersInThisCategory(new List<IPlayer> { player1, player2, player3 });
 
             Assert.That(result.Count, Is.EqualTo(1));
             Assert.That(result.First(), Is.EqualTo(player3));
@@ -142,7 +141,7 @@ namespace PokerExercise.Tests.Hands
                 TestUtils.CreateCard(Rank.Seven),
             });
 
-            var result = _highCard.FindWinningHandsInThisCategory(new List<IPlayer> {player1, player2, player3});
+            var result = _highCard.FindWinningPlayersInThisCategory(new List<IPlayer> {player1, player2, player3});
 
             Assert.That(result.Count, Is.EqualTo(1));
             Assert.That(result.First(), Is.EqualTo(player1));
@@ -169,7 +168,7 @@ namespace PokerExercise.Tests.Hands
                 TestUtils.CreateCard(Rank.Seven),
             });
 
-            var result = _highCard.FindWinningHandsInThisCategory(new List<IPlayer> { player1, player2, player3 });
+            var result = _highCard.FindWinningPlayersInThisCategory(new List<IPlayer> { player1, player2, player3 });
 
             Assert.That(result.Count, Is.EqualTo(1));
             Assert.That(result.First(), Is.EqualTo(player2));
@@ -196,7 +195,7 @@ namespace PokerExercise.Tests.Hands
                 TestUtils.CreateCard(Rank.Nine),
             });
 
-            var result = _highCard.FindWinningHandsInThisCategory(new List<IPlayer> { player1, player2, player3 });
+            var result = _highCard.FindWinningPlayersInThisCategory(new List<IPlayer> { player1, player2, player3 });
 
             Assert.That(result.Count, Is.EqualTo(3));
             Assert.That(result.Contains(player1), Is.True);
@@ -227,7 +226,7 @@ namespace PokerExercise.Tests.Hands
                 TestUtils.CreateCard(Rank.Ten, Suit.Hearts),
             });
 
-            var result = _highCard.FindWinningHandsInThisCategory(new List<IPlayer> { player1, player2, player3, player4});
+            var result = _highCard.FindWinningPlayersInThisCategory(new List<IPlayer> { player1, player2, player3, player4});
 
             Assert.That(result.Count, Is.EqualTo(4));
             Assert.That(result.Contains(player1), Is.True);

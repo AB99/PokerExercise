@@ -35,7 +35,7 @@ namespace PokerExercise.Tests
         {
             List<IPlayer> players = null;
 
-            var exception = Assert.Throws<ArgumentNullException>(() => _onePair.FindWinningHandsInThisCategory(players));
+            var exception = Assert.Throws<ArgumentNullException>(() => _onePair.FindWinningPlayersInThisCategory(players));
             Assert.That(exception.ParamName, Is.EqualTo(nameof(players)));
         }
 
@@ -47,14 +47,14 @@ namespace PokerExercise.Tests
             var player3 = TestUtils.CreatePlayer();
             var players = new List<IPlayer> { player1, player3, player2 };
 
-            var exception = Assert.Throws<ArgumentException>(() => _onePair.FindWinningHandsInThisCategory(players));
+            var exception = Assert.Throws<ArgumentException>(() => _onePair.FindWinningPlayersInThisCategory(players));
             Assert.That(exception.ParamName, Is.EqualTo(nameof(players)));
         }
 
         [Test]
         public void FindWinningHandsInThisCategory_EmptyList_ReturnsEmptyList()
         {
-            IList<IPlayer> result = _onePair.FindWinningHandsInThisCategory(new List<IPlayer>());
+            IList<IPlayer> result = _onePair.FindWinningPlayersInThisCategory(new List<IPlayer>());
             Assert.That(result.Count, Is.EqualTo(0));
         }
 
@@ -109,7 +109,7 @@ namespace PokerExercise.Tests
                 TestUtils.CreateCard(Rank.Eight),
             });
 
-            var result = _onePair.FindWinningHandsInThisCategory(new List<IPlayer> { player1, player2, player3 });
+            var result = _onePair.FindWinningPlayersInThisCategory(new List<IPlayer> { player1, player2, player3 });
 
             Assert.That(result.Count, Is.EqualTo(1));
             Assert.That(result.First(), Is.EqualTo(player2));
@@ -132,7 +132,7 @@ namespace PokerExercise.Tests
                 TestUtils.CreateCard(Rank.Seven),
             });
 
-            var result = _onePair.FindWinningHandsInThisCategory(new List<IPlayer> { player1, player2 });
+            var result = _onePair.FindWinningPlayersInThisCategory(new List<IPlayer> { player1, player2 });
 
             Assert.That(result.Count, Is.EqualTo(1));
             Assert.That(result.First(), Is.EqualTo(player1));
@@ -153,7 +153,7 @@ namespace PokerExercise.Tests
                 TestUtils.CreateCard(Rank.Ten),
             });
 
-            var result = _onePair.FindWinningHandsInThisCategory(new List<IPlayer> { player1, player2 });
+            var result = _onePair.FindWinningPlayersInThisCategory(new List<IPlayer> { player1, player2 });
 
             Assert.That(result.Count, Is.EqualTo(2));
             Assert.That(result.Contains(player1), Is.True);

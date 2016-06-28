@@ -9,6 +9,6 @@ namespace PokerExercise.Hands
     public interface IPokerHandCategory
     {
         bool Applies(IPlayer player);
-        List<IPlayer> FindWinningHandsInThisCategory(List<IPlayer> players);
+        List<IPlayer> FindWinningPlayersInThisCategory(List<IPlayer> players);
     }
 }
