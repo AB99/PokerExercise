@@ -137,6 +137,34 @@ namespace PokerExercise.Tests.PossiblePokerHands
         }
 
         [Test]
+        public void FindWinningHandsInThisCategory_FlushHighestValueDuplicated_FindsHighest()
+        {
+            var player1 = TestUtils.CreatePlayer(hand: new List<Card>
+            {
+                TestUtils.CreateCard(Rank.Queen, Suit.Spades),
+                TestUtils.CreateCard(Rank.Ten, Suit.Spades),
+            });
+
+            var player2 = TestUtils.CreatePlayer(hand: new List<Card>
+            {
+                TestUtils.CreateCard(Rank.Two, Suit.Diamonds),
+                TestUtils.CreateCard(Rank.Queen, Suit.Diamonds),
+            });
+
+            var player3 = TestUtils.CreatePlayer(hand: new List<Card>
+            {
+                TestUtils.CreateCard(Rank.Queen, Suit.Hearts),
+                TestUtils.CreateCard(Rank.Eight, Suit.Hearts),
+            });
+
+            var result = _flush.FindWinningPlayersWithThisHand(new List<IPlayer> { player1, player2, player3 });
+
+            Assert.That(result.Count, Is.EqualTo(1));
+            Assert.That(result.First(), Is.EqualTo(player1));
+        }
+
+
+        [Test]
         public void FindWinningHandsInThisCategory_FlushReverseOrder_FindsHighest()
         {
             var player1 = TestUtils.CreatePlayer(hand: new List<Card>
