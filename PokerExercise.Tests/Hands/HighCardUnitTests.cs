@@ -94,6 +94,34 @@ namespace PokerExercise.Tests.Hands
         }
 
         [Test]
+        public void FindWinningHandsInThisCategory_PlayersHighestCardsUniqueLowestFirst_FindsHighest()
+        {
+            var player1 = TestUtils.CreatePlayer(hand: new List<Card>
+            {
+                TestUtils.CreateCard(Rank.Nine),
+                TestUtils.CreateCard(Rank.Ten),
+            });
+
+            var player2 = TestUtils.CreatePlayer(hand: new List<Card>
+            {
+                TestUtils.CreateCard(Rank.Eight),
+                TestUtils.CreateCard(Rank.Jack),
+            });
+
+            var player3 = TestUtils.CreatePlayer(hand: new List<Card>
+            {
+                TestUtils.CreateCard(Rank.Seven),
+                TestUtils.CreateCard(Rank.King),
+            });
+
+            var result = _highCard.FindWinningHandsInThisCategory(new List<IPlayer> { player1, player2, player3 });
+
+            Assert.That(result.Count, Is.EqualTo(1));
+            Assert.That(result.First(), Is.EqualTo(player3));
+        }
+
+
+        [Test]
         public void FindWinningHandsInThisCategory_HighestCardDuplicatedSecondCardUnique_FindsHighest()
         {
             var player1 = TestUtils.CreatePlayer(hand: new List<Card>

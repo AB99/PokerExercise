@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PokerExercise.Hands
 {
@@ -29,22 +27,27 @@ namespace PokerExercise.Hands
             if (players.Any(p => p.Hand.Count() != handSize))
                 throw new ArgumentException(nameof(players) + " have different sized hands", nameof(players));
 
-            List<IPlayer> possibleWinners = players;
+
             Rank? highestRankAtPosition = null;
 
-            for (int i = 0; i < handSize; i++)
-            {
-                highestRankAtPosition = possibleWinners.Select(p => p.Hand[i].Rank).Max();
-                possibleWinners = possibleWinners.Where(p => p.Hand[i].Rank == highestRankAtPosition).ToList();
 
-                if (possibleWinners.Count(p => p.Hand[i].Rank == highestRankAtPosition) == 1)
-                {
-                    return new List<IPlayer> {possibleWinners.Single(p => p.Hand[i].Rank == highestRankAtPosition)};
-                }
+            //List<IPlayer> possibleWinners = players;
+            //Rank? highestRankAtPosition = null;
 
-            }
+            //for (int i = 0; i < handSize; i++)
+            //{
+            //    highestRankAtPosition = possibleWinners.Select(p => p.Hand[i].Rank).Max();
+            //    possibleWinners = possibleWinners.Where(p => p.Hand[i].Rank == highestRankAtPosition).ToList();
 
-            return players.Where(p => p.Hand[handSize - 1].Rank == highestRankAtPosition).ToList();
+            //    if (possibleWinners.Count(p => p.Hand[i].Rank == highestRankAtPosition) == 1)
+            //    {
+            //        return new List<IPlayer> {possibleWinners.Single(p => p.Hand[i].Rank == highestRankAtPosition)};
+            //    }
+            //}
+
+            //return players.Where(p => p.Hand[handSize - 1].Rank == highestRankAtPosition).ToList();
+
+            throw new NotImplementedException();
         }
     }
 }
