@@ -27,7 +27,7 @@ namespace PokerExercise.PossiblePokerHands
 
             players = players.Where(PlayerHasHand).ToList();
 
-            //Find highest pair among the players
+            //Calculate the highest value pair each player has
             Rank? highestPair = null;
 
             foreach (IPlayer player in players)
@@ -42,10 +42,17 @@ namespace PokerExercise.PossiblePokerHands
                 }
             }
 
+            //Select those players who have a pair of that value
             List<IPlayer> possibleWinners = players.Where(player => player.Cards.Count(c => c.Rank == highestPair) > 1).ToList();
+
+            //If there's a clear winner, return it, otherwise we have to look at the kickers
+            if (possibleWinners.Count == 1)
+                return possibleWinners;
+
             List<KickersInPlayersHand> kickersToCompare = 
                 possibleWinners.Select(p => new KickersInPlayersHand(p, new List<Card>(p.Cards))).ToList();
 
+            //Remove the higheset value pair from the kickers to be compared
             foreach (var kicker in kickersToCompare)
             {
                 List<Card> kickersToRemove = kicker.Kickers.Where(k => k.Rank == highestPair).ToList();
@@ -53,6 +60,7 @@ namespace PokerExercise.PossiblePokerHands
                 kicker.Kickers.Remove(kickersToRemove[1]);
             }
 
+            //Choose a winner based off the kickers
             return FindPlayersWithWinningKickers(kickersToCompare);
         }
     }

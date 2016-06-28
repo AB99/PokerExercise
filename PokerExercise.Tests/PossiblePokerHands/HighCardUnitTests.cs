@@ -18,7 +18,7 @@ namespace PokerExercise.Tests.PossiblePokerHands
         }
 
         [Test]
-        public void Applies_AlwaysReturnsTrue()
+        public void PlayerHasHand_AlwaysReturnsTrue()
         {
             Assert.That(_highCard.PlayerHasHand(TestUtils.CreatePlayer()), Is.True);
         }

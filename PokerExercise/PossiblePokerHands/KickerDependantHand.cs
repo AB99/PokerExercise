@@ -37,7 +37,7 @@ namespace PokerExercise.PossiblePokerHands
                     return new List<IPlayer> { possibleWinners.Single(p => p.Kickers[i].Rank == highestRankAtPosition).Player };
                 }
             }
-
+            
             return possibleWinners.Where(p => p.Kickers[kickerCount - 1].Rank == highestRankAtPosition).Select(k => k.Player).ToList();
         }
 

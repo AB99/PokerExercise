@@ -31,13 +31,13 @@ namespace PokerExercise.PossiblePokerHands
 
             foreach (IPlayer player in players)
             {
-                Rank playersHighestPair = player.Cards.Where(card => player.Cards.Count(c => c.Rank == card.Rank) > 2)
+                Rank playersHighestTriplet = player.Cards.Where(card => player.Cards.Count(c => c.Rank == card.Rank) > 2)
                     .Select(c => c.Rank)
                     .Max();
 
-                if (playersHighestPair > highestTriplet || highestTriplet == null)
+                if (playersHighestTriplet > highestTriplet || highestTriplet == null)
                 {
-                    highestTriplet = playersHighestPair;
+                    highestTriplet = playersHighestTriplet;
                 }
             }
 

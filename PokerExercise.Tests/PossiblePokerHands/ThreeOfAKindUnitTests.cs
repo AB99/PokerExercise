@@ -18,7 +18,7 @@ namespace PokerExercise.Tests.PossiblePokerHands
         }
 
         [Test]
-        public void Applies_PlayerNull_Throws()
+        public void PlayerHasHand_PlayerNull_Throws()
         {
             IPlayer player = null;
 
@@ -55,7 +55,7 @@ namespace PokerExercise.Tests.PossiblePokerHands
         }
 
         [Test]
-        public void Applies_ThreeOfAKindNotPresent_ReturnsFalse()
+        public void PlayerHasHand_ThreeOfAKindNotPresent_ReturnsFalse()
         {
             var player1 = TestUtils.CreatePlayer(hand: new List<Card>
             {
@@ -68,7 +68,7 @@ namespace PokerExercise.Tests.PossiblePokerHands
         }
 
         [Test]
-        public void Applies_ThreeOfAKindPresent_ReturnsTrue()
+        public void PlayerHasHand_ThreeOfAKindPresent_ReturnsTrue()
         {
             var player1 = TestUtils.CreatePlayer(hand: new List<Card>
             {

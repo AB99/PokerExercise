@@ -18,7 +18,7 @@ namespace PokerExercise.Tests.PossiblePokerHands
         }
 
         [Test]
-        public void Applies_PlayerNull_Throws()
+        public void PlayerHasHand_PlayerNull_Throws()
         {
             IPlayer player = null;
 
@@ -55,7 +55,7 @@ namespace PokerExercise.Tests.PossiblePokerHands
         }
 
         [Test]
-        public void Applies_NoPairPresent_ReturnsFalse()
+        public void PlayerHasHand_NoPairPresent_ReturnsFalse()
         {
             var player1 = TestUtils.CreatePlayer(hand: new List<Card>
             {
@@ -67,7 +67,7 @@ namespace PokerExercise.Tests.PossiblePokerHands
         }
 
         [Test]
-        public void Applies_PairPresent_ReturnsTrue()
+        public void PlayerHasHand_PairPresent_ReturnsTrue()
         {
             var player1 = TestUtils.CreatePlayer(hand: new List<Card>
             {

@@ -17,34 +17,34 @@ namespace PokerExercise.Tests
         [Test]
         public void CalculateWinner_Example1_ReturnsJoe()
         {
-            var joe = TestUtils.CreatePlayer("Joe",
-                new List<Card>
+            var joe = new Player("Joe",
+                new []
                 {
-                    TestUtils.CreateCard(Rank.Three, Suit.Hearts),
-                    TestUtils.CreateCard(Rank.Six, Suit.Hearts),
-                    TestUtils.CreateCard(Rank.Eight, Suit.Hearts),
-                    TestUtils.CreateCard(Rank.Jack, Suit.Hearts),
-                    TestUtils.CreateCard(Rank.King, Suit.Hearts),
+                    new Card(Rank.Three, Suit.Hearts),
+                    new Card(Rank.Six, Suit.Hearts),
+                    new Card(Rank.Eight, Suit.Hearts),
+                    new Card(Rank.Jack, Suit.Hearts),
+                    new Card(Rank.King, Suit.Hearts),
                 });
 
-            var jen = TestUtils.CreatePlayer("Jen",
-                new List<Card>
+            var jen = new Player("Jen",
+                new[]
                 {
-                    TestUtils.CreateCard(Rank.Three, Suit.Clubs),
-                    TestUtils.CreateCard(Rank.Three, Suit.Diamonds),
-                    TestUtils.CreateCard(Rank.Three, Suit.Spades),
-                    TestUtils.CreateCard(Rank.Eight, Suit.Clubs),
-                    TestUtils.CreateCard(Rank.Ten, Suit.Diamonds),
+                    new Card(Rank.Three, Suit.Clubs),
+                    new Card(Rank.Three, Suit.Diamonds),
+                    new Card(Rank.Three, Suit.Spades),
+                    new Card(Rank.Eight, Suit.Clubs),
+                    new Card(Rank.Ten, Suit.Diamonds),
                 });
 
-            var bob = TestUtils.CreatePlayer("Bob",
-                new List<Card>
+            var bob = new Player("Bob",
+                new[]
                 {
-                    TestUtils.CreateCard(Rank.Two, Suit.Hearts),
-                    TestUtils.CreateCard(Rank.Five, Suit.Clubs),
-                    TestUtils.CreateCard(Rank.Seven, Suit.Spades),
-                    TestUtils.CreateCard(Rank.Ten, Suit.Clubs),
-                    TestUtils.CreateCard(Rank.Ace, Suit.Clubs),
+                    new Card(Rank.Two, Suit.Hearts),
+                    new Card(Rank.Five, Suit.Clubs),
+                    new Card(Rank.Seven, Suit.Spades),
+                    new Card(Rank.Ten, Suit.Clubs),
+                    new Card(Rank.Ace, Suit.Clubs),
                 });
 
             var players = new List<IPlayer> {joe, jen, bob};
@@ -58,34 +58,34 @@ namespace PokerExercise.Tests
         [Test]
         public void CalculateWinner_Example2_ReturnsJen()
         {
-            var joe = TestUtils.CreatePlayer("Joe",
-                new List<Card>
+            var joe = new Player("Joe",
+                new[]
                 {
-                    TestUtils.CreateCard(Rank.Three, Suit.Hearts),
-                    TestUtils.CreateCard(Rank.Four, Suit.Diamonds),
-                    TestUtils.CreateCard(Rank.Nine, Suit.Clubs),
-                    TestUtils.CreateCard(Rank.Nine, Suit.Diamonds),
-                    TestUtils.CreateCard(Rank.Queen, Suit.Hearts),
+                    new Card(Rank.Three, Suit.Hearts),
+                    new Card(Rank.Four, Suit.Diamonds),
+                    new Card(Rank.Nine, Suit.Clubs),
+                    new Card(Rank.Nine, Suit.Diamonds),
+                    new Card(Rank.Queen, Suit.Hearts),
                 });
 
-            var jen = TestUtils.CreatePlayer("Jen",
-                new List<Card>
+            var jen = new Player("Jen",
+                new[]
                 {
-                    TestUtils.CreateCard(Rank.Five, Suit.Clubs),
-                    TestUtils.CreateCard(Rank.Seven, Suit.Diamonds),
-                    TestUtils.CreateCard(Rank.Nine, Suit.Hearts),
-                    TestUtils.CreateCard(Rank.Nine, Suit.Spades),
-                    TestUtils.CreateCard(Rank.Queen, Suit.Spades),
+                    new Card(Rank.Five, Suit.Clubs),
+                    new Card(Rank.Seven, Suit.Diamonds),
+                    new Card(Rank.Nine, Suit.Hearts),
+                    new Card(Rank.Nine, Suit.Spades),
+                    new Card(Rank.Queen, Suit.Spades),
                 });
 
-            var bob = TestUtils.CreatePlayer("Bob",
-                new List<Card>
+            var bob = new Player("Bob",
+                new[]
                 {
-                    TestUtils.CreateCard(Rank.Two, Suit.Hearts),
-                    TestUtils.CreateCard(Rank.Two, Suit.Clubs),
-                    TestUtils.CreateCard(Rank.Five, Suit.Spades),
-                    TestUtils.CreateCard(Rank.Ten, Suit.Clubs),
-                    TestUtils.CreateCard(Rank.Ace, Suit.Hearts),
+                    new Card(Rank.Two, Suit.Hearts),
+                    new Card(Rank.Two, Suit.Clubs),
+                    new Card(Rank.Five, Suit.Spades),
+                    new Card(Rank.Ten, Suit.Clubs),
+                    new Card(Rank.Ace, Suit.Hearts),
                 });
 
             var players = new List<IPlayer> { joe, jen, bob };
