@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace PokerExercise
 {
-    public class Class1
+    public enum Suit
     {
+        Hearts,
+        Spades,
+        Clubs,
+        Diamonds
     }
 }
