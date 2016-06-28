@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PokerExercise.Hands
 {
-    public interface IPokerHandCategory
+    public interface IPossiblePokerHand
     {
-        bool Applies(IPlayer player);
-        List<IPlayer> FindWinningPlayersInThisCategory(List<IPlayer> players);
+        bool PlayerHasHand(IPlayer player);
+        List<IPlayer> FindWinningPlayersWithThisHand(List<IPlayer> players);
     }
 }

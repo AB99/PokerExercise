@@ -4,14 +4,14 @@ using System.Linq;
 
 namespace PokerExercise.Hands
 {
-    public class HighCard : PokerHandCategory, IPokerHandCategory
+    public class HighCard : PokerHandCategory, IPossiblePokerHand
     {
-        public bool Applies(IPlayer player)
+        public bool PlayerHasHand(IPlayer player)
         {
             return true;
         }
 
-        public List<IPlayer> FindWinningPlayersInThisCategory(List<IPlayer> players)
+        public List<IPlayer> FindWinningPlayersWithThisHand(List<IPlayer> players)
         {
             if (players == null)
                 throw new ArgumentNullException(nameof(players));

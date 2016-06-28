@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace PokerExercise.Tests
@@ -17,7 +18,7 @@ namespace PokerExercise.Tests
         [Test]
         public void CalculateWinner_PlayersNull_Throws()
         {
-            IPlayer[] players = null;
+            List<IPlayer> players = null;
 
             var exception = Assert.Throws<ArgumentNullException>(() => _pokerGame.CalculateWinner(players));
             Assert.That(exception.ParamName, Is.EqualTo(nameof(players)));
@@ -26,7 +27,7 @@ namespace PokerExercise.Tests
         [Test]
         public void CalculateWinner_PlayersContainsNull_Throws()
         {
-            IPlayer[] players =
+            var players = new List<IPlayer>
             {
                 TestUtils.CreatePlayer(),
                 null,

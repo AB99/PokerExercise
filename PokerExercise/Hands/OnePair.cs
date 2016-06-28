@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PokerExercise.Hands
 {
-    public class OnePair : PokerHandCategory, IPokerHandCategory
+    public class OnePair : PokerHandCategory, IPossiblePokerHand
     {
-        public bool Applies(IPlayer player)
+        public bool PlayerHasHand(IPlayer player)
         {
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
@@ -16,7 +16,7 @@ namespace PokerExercise.Hands
             return player.Hand.Any(card => player.Hand.Count(c => c.Rank == card.Rank) > 1);
         }
 
-        public List<IPlayer> FindWinningPlayersInThisCategory(List<IPlayer> players)
+        public List<IPlayer> FindWinningPlayersWithThisHand(List<IPlayer> players)
         {
             if (players == null)
                 throw new ArgumentNullException(nameof(players));
@@ -27,7 +27,7 @@ namespace PokerExercise.Hands
             if (players.Count == 0)
                 return players;
 
-            players = players.Where(Applies).ToList();
+            players = players.Where(PlayerHasHand).ToList();
 
             //Find highest pair among the players
             Rank? highestPair = null;

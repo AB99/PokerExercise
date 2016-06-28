@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PokerExercise.Hands;
 
 namespace PokerExercise
 {
     public class PokerGame
     {
-        public IPlayer CalculateWinner(IList<IPlayer> players)
+        public List<IPossiblePokerHand> PossiblePokerHands = new List<IPossiblePokerHand>
+        {
+            new OnePair(),
+            new HighCard(),
+        };
+
+        public List<IPlayer> CalculateWinner(List<IPlayer> players)
         {
             if (players == null)
                 throw new ArgumentNullException(nameof(players));
@@ -16,12 +23,16 @@ namespace PokerExercise
             if (players.Any(p => p == null))
                 throw new ArgumentNullException(nameof(players));
 
-            throw new NotImplementedException();
+            foreach (IPossiblePokerHand possiblePokerHand in PossiblePokerHands)
+            {
+                var winners = possiblePokerHand.FindWinningPlayersWithThisHand(players);
+                if (winners.Count > 0)
+                {
+                    return winners;
+                }
+            }
 
-            //determine catergory
-
-            //determine hand ranking within category
-
+            throw new InvalidOperationException();
         }
     }
 }
