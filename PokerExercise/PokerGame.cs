@@ -10,6 +10,7 @@ namespace PokerExercise
     {
         public List<IPossiblePokerHand> PossiblePokerHands = new List<IPossiblePokerHand>
         {
+            new ThreeOfAKind(),
             new OnePair(),
             new HighCard(),
         };

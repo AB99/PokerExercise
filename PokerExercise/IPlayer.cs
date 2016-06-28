@@ -3,6 +3,6 @@
     public interface IPlayer
     {
         string Name { get; }
-        Card[] Hand { get; }
+        Card[] Cards { get; }
     }
 }

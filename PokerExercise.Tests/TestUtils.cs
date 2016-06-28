@@ -33,7 +33,7 @@ namespace PokerExercise.Tests
 
             var stubPlayer = new Mock<IPlayer>();
             stubPlayer.Setup(s => s.Name).Returns(name);
-            stubPlayer.Setup(s => s.Hand).Returns(hand.ToArray);
+            stubPlayer.Setup(s => s.Cards).Returns(hand.ToArray);
 
             return stubPlayer.Object;
         }

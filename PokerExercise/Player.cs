@@ -8,7 +8,7 @@ namespace PokerExercise
 {
     public class Player : IPlayer
     {
-        public Player(string name, Card [] hand)
+        public Player(string name, Card [] cards)
         {
             if (name == null)
                 throw new ArgumentNullException(nameof(name));
@@ -16,23 +16,23 @@ namespace PokerExercise
             if (name == string.Empty)
                 throw new ArgumentException(nameof(name) + " can not be empty.", nameof(name));
 
-            if (hand == null)
-                throw new ArgumentNullException(nameof(hand));
+            if (cards == null)
+                throw new ArgumentNullException(nameof(cards));
 
-            if (hand.Count() != 5)
-                throw new ArgumentException(nameof(hand) + " must contain 5 items", nameof(hand));
+            if (cards.Count() != 5)
+                throw new ArgumentException(nameof(cards) + " must contain 5 items", nameof(cards));
                 
-            if (hand.Any(c => c == null))
-                throw new ArgumentException(nameof(hand) + " must not contain null items", nameof(hand));
+            if (cards.Any(c => c == null))
+                throw new ArgumentException(nameof(cards) + " must not contain null items", nameof(cards));
 
-            if (hand.All(c => c.Suit == hand[0].Suit && c.Rank == hand[0].Rank))
-                throw new ArgumentException(nameof(hand) + " must not contain null items", nameof(hand));
+            if (cards.All(c => c.Suit == cards[0].Suit && c.Rank == cards[0].Rank))
+                throw new ArgumentException(nameof(cards) + " must not contain null items", nameof(cards));
 
             Name = name;
-            Hand = hand;
+            Cards = cards;
         }
 
         public string Name { get; }
-        public Card[] Hand { get; }
+        public Card[] Cards { get; }
     }
 }

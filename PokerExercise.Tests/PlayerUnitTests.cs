@@ -108,7 +108,7 @@ namespace PokerExercise.Tests
             var player = new Player(TestUtils.ValidName, TestUtils.ValidHand);
 
             Assert.That(player.Name, Is.EqualTo(TestUtils.ValidName));
-            Assert.That(player.Hand, Is.EqualTo(TestUtils.ValidHand));
+            Assert.That(player.Cards, Is.EqualTo(TestUtils.ValidHand));
         }
     }
 }

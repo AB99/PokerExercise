@@ -22,7 +22,7 @@ namespace PokerExercise.PossiblePokerHands
             if (players.Count == 0)
                 return players;
 
-            var kickersToCompare = players.Select(p => new KickersInPlayersHand(p, new List<Card>(p.Hand))).ToList();
+            var kickersToCompare = players.Select(p => new KickersInPlayersHand(p, new List<Card>(p.Cards))).ToList();
             return FindPlayersWithWinningKickers(kickersToCompare);
         }
     }

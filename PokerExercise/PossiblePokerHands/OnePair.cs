@@ -11,7 +11,7 @@ namespace PokerExercise.PossiblePokerHands
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
 
-            return player.Hand.Any(card => player.Hand.Count(c => c.Rank == card.Rank) > 1);
+            return player.Cards.Any(card => player.Cards.Count(c => c.Rank == card.Rank) > 1);
         }
 
         public List<IPlayer> FindWinningPlayersWithThisHand(List<IPlayer> players)
@@ -32,7 +32,7 @@ namespace PokerExercise.PossiblePokerHands
 
             foreach (IPlayer player in players)
             {
-                Rank playersHighestPair = player.Hand.Where(card => player.Hand.Count(c => c.Rank == card.Rank) > 1)
+                Rank playersHighestPair = player.Cards.Where(card => player.Cards.Count(c => c.Rank == card.Rank) > 1)
                     .Select(c => c.Rank)
                     .Max();
 
@@ -42,9 +42,9 @@ namespace PokerExercise.PossiblePokerHands
                 }
             }
 
-            List<IPlayer> possibleWinners = players.Where(player => player.Hand.Count(c => c.Rank == highestPair) > 1).ToList();
+            List<IPlayer> possibleWinners = players.Where(player => player.Cards.Count(c => c.Rank == highestPair) > 1).ToList();
             List<KickersInPlayersHand> kickersToCompare = 
-                possibleWinners.Select(p => new KickersInPlayersHand(p, new List<Card>(p.Hand))).ToList();
+                possibleWinners.Select(p => new KickersInPlayersHand(p, new List<Card>(p.Cards))).ToList();
 
             foreach (var kicker in kickersToCompare)
             {
