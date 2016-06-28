@@ -8,8 +8,14 @@ namespace PokerExercise
 {
     public class PokerGame
     {
-        public Player CalculateWinner(IList<Player> players)
+        public IPlayer CalculateWinner(IList<IPlayer> players)
         {
+            if (players == null)
+                throw new ArgumentNullException(nameof(players));
+
+            if (players.Any(p => p == null))
+                throw new ArgumentNullException(nameof(players));
+
             throw new NotImplementedException();
         }
     }

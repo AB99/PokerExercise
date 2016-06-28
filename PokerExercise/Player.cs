@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokerExercise
 {
-    public class Player
+    public class Player : IPlayer
     {
         public Player(string name, Card [] hand)
         {
