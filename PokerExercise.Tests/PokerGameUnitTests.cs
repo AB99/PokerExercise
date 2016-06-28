@@ -33,9 +33,9 @@ namespace PokerExercise.Tests
         {
             IPlayer[] players =
             {
-                CreatePlayer(),
+                TestUtils.CreatePlayer(),
                 null,
-                CreatePlayer(),
+                TestUtils.CreatePlayer(),
             };
 
             var exception = Assert.Throws<ArgumentNullException>(() => _pokerGame.CalculateWinner(players));
@@ -46,17 +46,5 @@ namespace PokerExercise.Tests
         //public void CalculateWinner_PlayersContainsNull_Throws()
         //{
         //}
-
-        private static IPlayer CreatePlayer(string name = "Bob", Card[] hand = null)
-        {
-            hand = hand ?? new Card[0];
-
-            var stubPlayer = new Mock<IPlayer>();
-            stubPlayer.Setup(s => s.Name).Returns(name);
-            stubPlayer.Setup(s => s.Hand).Returns(hand.ToArray);
-
-            return stubPlayer.Object;
-        }
-
     }
 }

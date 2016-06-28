@@ -17,6 +17,11 @@ namespace PokerExercise
                 throw new ArgumentNullException(nameof(players));
 
             throw new NotImplementedException();
+
+            //determine catergory
+
+            //determine hand ranking within category
+
         }
     }
 }
