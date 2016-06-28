@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CardUnitTests.cs" />
+    <Compile Include="PokerGameIntegrationTests.cs" />
     <Compile Include="PossiblePokerHands\HighCardUnitTests.cs" />
     <Compile Include="PossiblePokerHands\FlushUnitTests.cs" />
     <Compile Include="PossiblePokerHands\ThreeOfAKindUnitTests.cs" />
