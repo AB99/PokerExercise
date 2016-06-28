@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokerExercise.Hands
 {
-    public class OnePair : IPokerHandCategory
+    public class OnePair : PokerHandCategory, IPokerHandCategory
     {
         public bool Applies(IPlayer player)
         {
@@ -27,7 +27,35 @@ namespace PokerExercise.Hands
             if (players.Count == 0)
                 return players;
 
-            throw new NotImplementedException();
+            players = players.Where(Applies).ToList();
+
+            //Find highest pair among the players
+            Rank? highestPair = null;
+
+            foreach (IPlayer player in players)
+            {
+                Rank playersHighestPair = player.Hand.Where(card => player.Hand.Count(c => c.Rank == card.Rank) > 1)
+                    .Select(c => c.Rank)
+                    .Max();
+
+                if (playersHighestPair > highestPair || highestPair == null)
+                {
+                    highestPair = playersHighestPair;
+                }
+            }
+
+            List<IPlayer> possibleWinners = players.Where(player => player.Hand.Count(c => c.Rank == highestPair) > 1).ToList();
+            List<KickersInPlayersHand> kickersToCompare = 
+                possibleWinners.Select(p => new KickersInPlayersHand(p, new List<Card>(p.Hand))).ToList();
+
+            foreach (var kicker in kickersToCompare)
+            {
+                List<Card> kickersToRemove = kicker.Kickers.Where(k => k.Rank == highestPair).ToList();
+                kicker.Kickers.Remove(kickersToRemove[0]);
+                kicker.Kickers.Remove(kickersToRemove[1]);
+            }
+
+            return FindPlayersWithWinningKickers(kickersToCompare);
         }
     }
 }

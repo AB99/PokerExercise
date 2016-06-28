@@ -19,8 +19,6 @@ namespace PokerExercise.Tests
             _onePair = new OnePair();
         }
 
-
-
         [Test]
         public void Applies_PlayerNull_Throws()
         {
@@ -31,7 +29,7 @@ namespace PokerExercise.Tests
         }
 
         [Test]
-        public void FindWinningHandsInThisCategory_HandIsNull_Throws()
+        public void FindWinningHandsInThisCategory_PlayersNull_Throws()
         {
             List<IPlayer> players = null;
 
@@ -40,7 +38,7 @@ namespace PokerExercise.Tests
         }
 
         [Test]
-        public void FindWinningHandsInThisCategory_HandContainsNull_Throws()
+        public void FindWinningHandsInThisCategory_PlayersContainsNull_Throws()
         {
             var player1 = TestUtils.CreatePlayer();
             IPlayer player2 = null;
@@ -82,22 +80,46 @@ namespace PokerExercise.Tests
             Assert.That(_onePair.Applies(player1), Is.True);
         }
 
+
         [Test]
-        public void FindWinningHandsInThisCategory_PairsAreUnique_FindsHighest()
+        public void FindWinningHandsInThisCategory_NoPairs_ReturnsEmptyList()
         {
             var player1 = TestUtils.CreatePlayer(hand: new List<Card>
             {
-                TestUtils.CreateCard(Rank.Ten),
-                TestUtils.CreateCard(Rank.Ten),
-                TestUtils.CreateCard(Rank.Nine),
                 TestUtils.CreateCard(Rank.Nine),
             });
 
             var player2 = TestUtils.CreatePlayer(hand: new List<Card>
             {
                 TestUtils.CreateCard(Rank.Two),
+            });
+
+            var player3 = TestUtils.CreatePlayer(hand: new List<Card>
+            {
+                TestUtils.CreateCard(Rank.Four),
+            });
+
+            var result = _onePair.FindWinningPlayersInThisCategory(new List<IPlayer> { player1, player2, player3 });
+
+            Assert.That(result.Count, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void FindWinningHandsInThisCategory_PairsAreUnique_FindsHighest()
+        {
+            var player1 = TestUtils.CreatePlayer(hand: new List<Card>
+            {
+                TestUtils.CreateCard(Rank.Nine),
+                TestUtils.CreateCard(Rank.Ten),
+                TestUtils.CreateCard(Rank.Ten),
+                TestUtils.CreateCard(Rank.Nine),
+            });
+
+            var player2 = TestUtils.CreatePlayer(hand: new List<Card>
+            {
                 TestUtils.CreateCard(Rank.Two),
                 TestUtils.CreateCard(Rank.Queen),
+                TestUtils.CreateCard(Rank.Two),
                 TestUtils.CreateCard(Rank.Queen),
             });
 
@@ -160,5 +182,26 @@ namespace PokerExercise.Tests
             Assert.That(result.Contains(player2), Is.True);
         }
 
+        [Test]
+        public void FindWinningHandsInThisCategory_AllCardsDuplicatedInRankButNotSuit_ReturnsAllPlayers()
+        {
+            var player1 = TestUtils.CreatePlayer(hand: new List<Card>
+            {
+                TestUtils.CreateCard(Rank.Ten, Suit.Hearts),
+                TestUtils.CreateCard(Rank.Ten, Suit.Spades),
+            });
+
+            var player2 = TestUtils.CreatePlayer(hand: new List<Card>
+            {
+                TestUtils.CreateCard(Rank.Ten, Suit.Diamonds),
+                TestUtils.CreateCard(Rank.Ten, Suit.Clubs),
+            });
+
+            var result = _onePair.FindWinningPlayersInThisCategory(new List<IPlayer> { player1, player2 });
+
+            Assert.That(result.Count, Is.EqualTo(2));
+            Assert.That(result.Contains(player1), Is.True);
+            Assert.That(result.Contains(player2), Is.True);
+        }
     }
 }

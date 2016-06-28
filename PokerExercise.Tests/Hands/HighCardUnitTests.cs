@@ -27,7 +27,7 @@ namespace PokerExercise.Tests.Hands
 
 
         [Test]
-        public void FindWinningHandsInThisCategory_HandIsNull_Throws()
+        public void FindWinningHandsInThisCategory_PlayersNull_Throws()
         {
             List<IPlayer> players = null;
 
@@ -36,7 +36,7 @@ namespace PokerExercise.Tests.Hands
         }
 
         [Test]
-        public void FindWinningHandsInThisCategory_HandContainsNull_Throws()
+        public void FindWinningHandsInThisCategory_PlayersContainsNull_Throws()
         {
             var player1 = TestUtils.CreatePlayer();
             IPlayer player2 = null;
@@ -234,5 +234,22 @@ namespace PokerExercise.Tests.Hands
             Assert.That(result.Contains(player3), Is.True);
             Assert.That(result.Contains(player4), Is.True);
         }
+
+
+        [Test]
+        public void FindWinningHandsInThisCategory_PlayersHaveNoCards_ReturnsAllPlayers()
+        {
+            var player1 = TestUtils.CreatePlayer(hand: new List<Card>());
+            var player2 = TestUtils.CreatePlayer(hand: new List<Card>());
+            var player3 = TestUtils.CreatePlayer(hand: new List<Card>());
+
+            var result = _highCard.FindWinningPlayersInThisCategory(new List<IPlayer> { player1, player2, player3 });
+
+            Assert.That(result.Count, Is.EqualTo(3));
+            Assert.That(result.Contains(player1), Is.True);
+            Assert.That(result.Contains(player2), Is.True);
+            Assert.That(result.Contains(player3), Is.True);
+        }
+
     }
 }

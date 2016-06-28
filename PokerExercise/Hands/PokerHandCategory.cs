@@ -10,12 +10,6 @@ namespace PokerExercise.Hands
     {
         protected List<IPlayer> FindPlayersWithWinningKickers(List<KickersInPlayersHand> kickersToCompare)
         {
-            if (kickersToCompare == null)
-                throw new ArgumentNullException(nameof(kickersToCompare));
-
-            if (kickersToCompare.Any(p => p == null))
-                throw new ArgumentException(nameof(kickersToCompare) + " can not contain null", nameof(kickersToCompare));
-
             if (kickersToCompare.Count == 0)
                 return new List<IPlayer>();
 
@@ -23,6 +17,9 @@ namespace PokerExercise.Hands
 
             if (kickersToCompare.Any(p => p.Kickers.Count() != kickerCount))
                 throw new ArgumentException("Kicker counts are different", nameof(kickerCount));
+
+            if (kickerCount == 0)
+                return kickersToCompare.Select(k => k.Player).ToList();
 
             foreach (var kicker in kickersToCompare)
             {
