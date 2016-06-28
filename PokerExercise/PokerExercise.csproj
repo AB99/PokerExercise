@@ -41,12 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Card.cs" />
-    <Compile Include="Hands\Flush.cs" />
-    <Compile Include="Hands\HighCard.cs" />
-    <Compile Include="Hands\IPossiblePokerHand.cs" />
-    <Compile Include="Hands\OnePair.cs" />
-    <Compile Include="Hands\PokerHandCategory.cs" />
-    <Compile Include="Hands\ThreeOfAKind.cs" />
+    <Compile Include="PossiblePokerHands\Flush.cs" />
+    <Compile Include="PossiblePokerHands\HighCard.cs" />
+    <Compile Include="PossiblePokerHands\IPossiblePokerHand.cs" />
+    <Compile Include="PossiblePokerHands\OnePair.cs" />
+    <Compile Include="PossiblePokerHands\KickerDependantHand.cs" />
+    <Compile Include="PossiblePokerHands\ThreeOfAKind.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="Rank.cs" />
     <Compile Include="Suit.cs" />

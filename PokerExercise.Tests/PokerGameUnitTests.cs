@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using PokerExercise.Hands;
+using PokerExercise.PossiblePokerHands;
 
 namespace PokerExercise.Tests
 {

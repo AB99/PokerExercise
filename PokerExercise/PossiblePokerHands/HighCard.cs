@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PokerExercise.Hands
+namespace PokerExercise.PossiblePokerHands
 {
-    public class HighCard : PokerHandCategory, IPossiblePokerHand
+    public class HighCard : KickerDependantHand, IPossiblePokerHand
     {
         public bool PlayerHasHand(IPlayer player)
         {

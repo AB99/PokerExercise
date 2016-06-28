@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PokerExercise.Hands
+namespace PokerExercise.PossiblePokerHands
 {
-    public class PokerHandCategory 
+    public class KickerDependantHand 
     {
         protected List<IPlayer> FindPlayersWithWinningKickers(List<KickersInPlayersHand> kickersToCompare)
         {
